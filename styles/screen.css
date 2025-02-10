@@ -1,50 +1,147 @@
+:root {
+  --page-bg: #000;  
+
+  --card-bg: #fff;
+  --card-shadow: 0 0 12px rgba(128, 128, 128, 0.2);
+  --hover-shadow: 0 0 16px rgba(128, 128, 128, 0.3);
+
+  /* Planet color tokens */
+  --mercury-color: #949494;
+  --venus-color: #c99948;
+  --earth-color: #3498db;
+  --mars-color: #cc5543;
+  --jupiter-color: #c18f65;
+  --saturn-color: #d8ca9d;
+  --uranus-color: #8cdde0;
+  --neptune-color: #4b78d1;
+}
+
 body {
-    font-family: Helvetica, sans-serif;
-    color: #EAE8FF;
-    background: #2D3142;
-    padding: 0 40px;
-    text-align: center;
-}
-
-nav {
-    margin: 40px auto 0 auto;
-    width: 250px;
-    border-radius: 50px;
-    background: #212431;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    list-style-type: none;
-    margin: 0;
-}
-
-nav ul li a {
-    display: inline-block;
-    padding: 20px;
-    color: #EAE8FF;
-    text-decoration: none;
-    font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+  background-color: var(--page-bg);
+  font-family: "Inclusive Sans", sans-serif;
+  color: #fff;
 }
 
 h1 {
-    font-size: 8em;
-    letter-spacing: -2px;
+  margin: 0;
+  padding: 5px 0 0 30px;
 }
 
-h1 strong {
-    background: rgb(34,193,195);
-    background: linear-gradient(45deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 20px;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
-img.about {
-    opacity: 0.5;
+.card {
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
+}
+
+/* circle */
+.planet-avatar {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+.sun {
+  grid-row: span 2;
+}
+
+.sun .planet-avatar {
+  background: radial-gradient(circle at center, yellow 40%, orange 100%);
+  width: 120px;
+  height: 120px;
+}
+
+.sun h2,
+.sun p {
+  color: #ffb400;
+  margin: 10px 0 0;
+}
+
+.planet.mercury {
+  --planet-color: var(--mercury-color);
+  --planet-gradient: linear-gradient(135deg, #6f6f6f, #b3b3b3);
+}
+
+.planet.venus {
+  --planet-color: var(--venus-color);
+  --planet-gradient: linear-gradient(135deg, #c99948, #e0b963);
+}
+
+.planet.earth {
+  --planet-color: var(--earth-color);
+  --planet-gradient: repeating-linear-gradient(45deg, #3498db 50%, #0a5027);
+}
+
+.planet.mars {
+  --planet-color: var(--mars-color);
+  --planet-gradient: radial-gradient(circle, #cc5543, #9b3b2d);
+}
+
+.planet.jupiter {
+  --planet-color: var(--jupiter-color);
+  --planet-gradient: repeating-linear-gradient(
+    45deg,
+    #c18f65,
+    #c18f65 10px,
+    #b08463 10px,
+    #b08463 20px
+  );
+}
+
+.planet.saturn {
+  --planet-color: var(--saturn-color);
+  --planet-gradient: repeating-linear-gradient(
+    45deg,
+    #d8ca9d,
+    #d8ca9d 10px,
+    #cec18f 10px,
+    #cec18f 20px
+  );
+}
+
+.planet.uranus {
+  --planet-color: var(--uranus-color);
+  --planet-gradient: linear-gradient(135deg, #a4f7fa, #56ced4);
+}
+
+.planet.neptune {
+  --planet-color: var(--neptune-color);
+  --planet-gradient: radial-gradient(circle, #4b78d1, #2f4e8f);
+}
+
+.planet-avatar {
+  background: var(--planet-gradient, #ccc);
+}
+
+.planet h3,
+.planet p {
+  color: var(--planet-color);
+  margin: 0.5em 0 0;
 }
